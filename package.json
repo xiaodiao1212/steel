@@ -1,0 +1,53 @@
+{
+  "name": "steel",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "dependencies": {
+    "crypto": "^1.0.1",
+    "egg": "^2.2.1",
+    "egg-jwt": "^3.1.2",
+    "egg-scripts": "^2.5.0",
+    "egg-sequelize": "^3.1.5",
+    "egg-validate": "^1.0.0",
+    "moment": "^2.22.2",
+    "mysql2": "^1.5.3"
+  },
+  "devDependencies": {
+    "autod": "^3.0.1",
+    "autod-egg": "^1.0.0",
+    "egg-bin": "^4.3.5",
+    "egg-ci": "^1.8.0",
+    "egg-development-proxyworker": "^1.2.0",
+    "egg-mock": "^3.14.0",
+    "eslint": "^4.11.0",
+    "eslint-config-egg": "^6.0.0",
+    "webstorm-disable-index": "^1.2.0"
+  },
+  "engines": {
+    "node": ">=8.9.0"
+  },
+  "scripts": {
+    "start": "egg-scripts start --daemon --title=steel",
+    "stop": "egg-scripts stop --title=steel",
+    "dev": "egg-bin dev",
+    "debug": "egg-bin debug",
+    "test": "npm run lint -- --fix && npm run test-local",
+    "test-local": "egg-bin test",
+    "start:test": "egg-scripts stop --title=steel && egg-scripts start --title=steel --daemon --env=test",
+    "start:prod": "egg-scripts stop --title=steel && egg-scripts start --title=steel --daemon --env=prod",
+    "cov": "egg-bin cov",
+    "lint": "eslint .",
+    "ci": "npm run lint && npm run cov",
+    "autod": "autod"
+  },
+  "ci": {
+    "version": "8"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "zhaobin",
+  "license": "MIT"
+}
