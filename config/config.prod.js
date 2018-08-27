@@ -6,8 +6,8 @@ module.exports = appInfo => {
   config.sequelize = {
     dialect: 'mysql',
     database: 'steel',
-    host: 'pluto_datapark-Mdb.inner.jiedaibao.com',
-    port: '13308',
+    host: 'localhost',
+    port: '3306',
     username: 'steel',
     password: 'diaodiao1212',
     timezone: '+08:00',
