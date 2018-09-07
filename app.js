@@ -4,7 +4,7 @@ module.exports = app => {
   app.beforeStart(async function() {
 
     if (app.env === 'local') {
-      await app.model.sync({ force: false }); // false的时候不会重启数据库。
+      await app.model.sync({ force: true }); // false的时候不会重启数据库。
     }
 
     // await app.model.Role.init();
