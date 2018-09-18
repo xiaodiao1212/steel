@@ -13,7 +13,7 @@ exports.jwt = {
     secret: "wx973b108b0746a5c0"
 };
 exports.checkUrl = ['/price/identity'];
-exports.openids = ['ob8pF4-FcP9USH10D9Hg8gKW148M', 'ob8pF42NbsleU2GRS0AUpn54R2jk'];
+exports.openids = ['ob8pF4-FcP9USH10D9Hg8gKW148M', 'ob8pF42NbsleU2GRS0AUpn54R2jk', 'ob8pF4wiNQ2ARewhJRyFLCJ-TAiw'];
 
 exports.keys = 'session';
 
