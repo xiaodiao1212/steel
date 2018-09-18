@@ -112,9 +112,12 @@ class PriceController extends Controller {
             return;
         }
 		let resultData = JSON.parse(result.data.toString());
+		console.log("===================resultData======================");
+		console.log(resultData);
 		let openid = resultData.openid;
+		console.log("===================openid======================");
+		console.log(openid);
 		let token = this.app.jwt.sign({ openid: openid }, this.app.config.jwt.secret);
-		console.log(token);
 		this.ctx.returnMsg('0', '成功', {token});
 	};
 
