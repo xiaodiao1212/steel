@@ -31,10 +31,10 @@
 //   	return decoded
 // }
 
-// const getJsonData = function(dbData){
-//   const jsonData = JSON.stringify(dbData);
-//   return JSON.parse(jsonData);
-// }
+const getJsonData = function(dbData){
+  const jsonData = JSON.stringify(dbData);
+  return JSON.parse(jsonData);
+}
 
 module.exports = {
   getJsonData
