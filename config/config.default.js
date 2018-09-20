@@ -13,7 +13,8 @@ exports.jwt = {
     secret: "wx973b108b0746a5c0"
 };
 exports.checkUrl = ['/price/identity'];
-exports.openids = ['ob8pF4-FcP9USH10D9Hg8gKW148M', 'ob8pF42NbsleU2GRS0AUpn54R2jk', 'ob8pF4wiNQ2ARewhJRyFLCJ-TAiw'];
+// ids名称：钊彬、钊兰、胡秀琴、钊建
+exports.openids = ['ob8pF4-FcP9USH10D9Hg8gKW148M', 'ob8pF42NbsleU2GRS0AUpn54R2jk', 'ob8pF4wiNQ2ARewhJRyFLCJ-TAiw', 'ob8pF4xFk0lnHsmP3emkRUP12gW8'];
 
 exports.keys = 'session';
 
