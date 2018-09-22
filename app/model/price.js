@@ -29,6 +29,10 @@ module.exports = app => {
 			allowNull: false,
 			type: STRING,
 		},
+		amount: {
+			allowNull: false,
+			type: STRING,
+		},
 		warning: {
 			allowNull: false,
 			defaultValue: false,
@@ -56,13 +60,14 @@ module.exports = app => {
 			underscored: true
 		}
 	);
-	Price.addItem = async function (size, specification, type, detail, price, warning) {
+	Price.addItem = async function (size, specification, type, detail, price, amount, warning) {
 		return await this.create({
 			size,
 			specification,
 			type,
 			detail,
 			price,
+			amount,
 			warning,
 			is_deleted: false
 		});
@@ -78,10 +83,11 @@ module.exports = app => {
 			}
 		);
 	};
-	Price.updateItem = async function (id, detail, price, warning) {
+	Price.updateItem = async function (id, detail, price, amount, warning) {
 		return await this.update({
 			detail,
 			price,
+			amount,
 			warning
 		}, {
 				where: {

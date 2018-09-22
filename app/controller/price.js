@@ -3,8 +3,6 @@ const crypto = require('crypto');
 
 const Controller = require('egg').Controller;
 
-
-
 class PriceController extends Controller {
 	async create() {
 		this.ctx.validate({
@@ -12,19 +10,20 @@ class PriceController extends Controller {
 			specification: 'string',
 			type: 'string',
 			price: 'string',
+			amount: 'string',
 			warning: 'boolean',
 			detail: {
 				type: 'string',
 				empty: true,
 			}
 		});
-		let { size, specification, type, detail, price, warning } = this.ctx.request.body;
+		let { size, specification, type, detail, price, amount, warning } = this.ctx.request.body;
 		let hasOne = await this.ctx.model.Price.findItem(size, specification, type);
 		if (hasOne) {
 			this.ctx.returnMsg('1001', '数据已存在', {});
 			return false;
 		}
-		let result = await this.ctx.model.Price.addItem(size, specification, type, detail, price, warning);
+		let result = await this.ctx.model.Price.addItem(size, specification, type, detail, price, amount, warning);
 
 		if (result) {
 			this.ctx.success();
@@ -54,26 +53,29 @@ class PriceController extends Controller {
 				empty: true,
 			},
 			price: 'string',
+			amount: 'string',
 			warning: 'boolean'
 		});
-		let { id, detail, price, warning } = this.ctx.request.body;
+		let { id, detail, price, amount, warning } = this.ctx.request.body;
 
 		let hasOne = await this.ctx.model.Price.findItemById(id);
-
+		let changed = this.ctx.helper.hasCanged({detail, price, amount, warning}, hasOne);
+		if(!changed){
+			return this.ctx.returnMsg('4002', '请编辑数据后更新', {});
+		}
+		
 		if (hasOne) {
-			let result = await this.ctx.model.Price.updateItem(id, detail, price, warning);
+			let result = await this.ctx.model.Price.updateItem(id, detail, price, amount, warning);
 			if (result) {
 				this.ctx.success();
 			} else {
 				this.ctx.returnMsg('500', '更新数据出错', {});
 			}
 		} else {
-			this.ctx.returnMsg('0', '数据不存在', {});
+			this.ctx.returnMsg('500', '数据找不到', {});
 		}
-
-
-
 	};
+	
 	async findOne() {
 		this.ctx.validate({
 			id: 'string'
